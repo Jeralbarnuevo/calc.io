@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+
+    }
+    body{
+        background-color: #333C83;
+        transition: 1s;
+    }
+    .main{
+        height: 100vh;
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .box{
+        padding:1rem;
+        width: 50%;
+        max-width: 500px;
+        min-width: 250px;
+        height: 500px;
+        border: .5px black solid;
+        margin:1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap:1rem;
+        text-align: center;
+        box-shadow:6px 10px 12px 1px  black;
+        background-color: #FDAF75;
+        border-radius:.5rem;
+        animation:fadein 3s;
+        
+        
+    }
+    input{
+        max-width: 500px;
+        min-height: 30px;
+        padding:1rem;
+    }
+   
+    .choose{
+        display: flex;
+        flex-wrap: wrap;
+        
+        
+    }
+    button{
+        width: 50%;
+        height:50px;
+        font-size: 1.5rem;
+    }
+    input[type=text]{
+        height: 500px;
+    }
+    p{
+        font-size: 1em;
+    }
+    .clear{
+        width: 100%;
+    }
+    .mode{
+        width: 100%;
+        height: 20px;
+        font-size:1.5vmin;
+    }
+    .light-mode{
+        background-color: aliceblue;
+        transition: 1s ;
+    }
+    @keyframes fadein {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+    
+</style>
+<body>
+    <div class="main">
+        <div class="toggle">
+            <button class="mode" id="mode">Light</button>
+        </div>
+        <div class="box">
+            <h1>Calculator</h1>
+            <input type="text" id="total" placeholder="Total"  readonly>
+            <input type="number" class="num1" id="num1" placeholder="Enter your first number">
+            <input type="number" class="num2" id="num2" placeholder="Enter your second number">
+            <div class="choose">
+                <button id="sum">+</button>
+                <button id="subtract" onclick="sub()">-</button>
+                <button id="multiply" onclick="multiply()">x</button>
+                <button id="division" onclick="divide()">/</button>
+                <button id="clear" class="clear">Clear</button>
+            </div>
+            <p>Program by: JERAL BARNUEVO</p>
+        </div>
+    </div>
+
+</body>
+    <script type="text/javascript">
+      const num1 = document.querySelector('#num1')
+      const num2 = document.querySelector('#num2')
+      const submit = document.querySelector('#submit')
+      const total = document.querySelector('#total')
+      const add = document.querySelector('#sum')
+      const clear = document.querySelector('#clear')
+      const dark = document.querySelector('#mode')
+
+      add.addEventListener('click', ()=>{
+          let sum = 0
+          sum = Number(num1.value) + Number(num2.value)
+          total.value=sum
+      })
+      
+      const sub = () =>{
+          let subtract = 0
+          subtract = Number(num1.value) - Number(num2.value)
+          total.value=subtract
+      }
+      const multiply = () =>{
+          let multi = 0
+          multi = Number(num1.value) * Number(num2.value)
+          total.value=multi
+      }
+      const divide = () =>{
+          let divide = 0
+          divide = Number(num1.value) / Number(num2.value)
+          total.value=divide
+      }
+      clear.addEventListener('click', ()=>{
+          num1.value=''
+          num2.value=''
+          total.value=''
+      })
+      dark.addEventListener('click', () =>{
+          const body = document.body
+          body.classList.toggle("light-mode")
+          const click =document.querySelector('#mode')
+          if(click.innerHTML==="Dark"){
+              click.innerHTML="Light"
+          }else{
+              click.innerHTML="Dark"
+          }
+          
+          
+          
+      })
+      
+
+    </script>
+</html>
